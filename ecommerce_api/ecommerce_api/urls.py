@@ -25,7 +25,7 @@ schema_view = get_schema_view(
         title="E-Commerce API",
         default_version='v1',
         description="API documentation for the e-commerce platform",
-        terms_of_service="",
+        terms_of_service="https://github.com/htetarkar2246/E-commerce-api.git",
         contact=openapi.Contact(email="htetarkarlevi@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),

@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from .models import User
+from .models import CustomUser
 import re
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
+        model = CustomUser
         fields = '__all__'
         extra_kwargs = {
             'password': {'write_only': True},
@@ -30,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
     def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
+        if CustomUser.objects.filter(email=value).exists():
             raise serializers.ValidationError("This email is already registered.")
         return value
 
