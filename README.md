@@ -1,6 +1,6 @@
-# E-commerce-api
+# library-api
 
-This is a E-commerce api that used Django. This project utilizes **Data Envelop** for standardized API responses, which enhances the clarity and consistency of the data exchanged between the client and server. By employing this structure, the API responses are easier to interpret, providing users with a clear understanding of success or failure, along with any associated messages and data.
+This is a library api that used Django. This project utilizes **Data Envelop** for standardized API responses, which enhances the clarity and consistency of the data exchanged between the client and server. By employing this structure, the API responses are easier to interpret, providing users with a clear understanding of success or failure, along with any associated messages and data.
 
 ## Installation
 

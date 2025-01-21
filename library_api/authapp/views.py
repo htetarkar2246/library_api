@@ -6,6 +6,13 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken  
 from .utils import generate_otp, send_otp_email
 from django.utils.timezone import now
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+HOSTING = os.environ.get('HOSTING')
+
 class RegisterView(APIView):
   def post(sef, request):
     serializer  = UserSerializer(data = request.data)
@@ -38,8 +45,8 @@ class RegisterView(APIView):
           },
           "errors": serializer.errors,
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
           }
         }
       return Response(response, status=status.HTTP_400_BAD_REQUEST)
@@ -59,10 +66,10 @@ class LoginView(APIView):
             "password": "Password is required."
           },
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
-            "login":"http://127.0.0.1:8000/api/login",
-            "forget_password":"http://127.0.0.1:8000/api/forget_password",
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
+            "login":HOSTING+"/api/login",
+            "forget_password":HOSTING+"/api/forget_password",
             
           }
         }
@@ -77,10 +84,10 @@ class LoginView(APIView):
           },
           "errors": "User not found!",
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
-            "login":"http://127.0.0.1:8000/api/login",
-            "forget_password":"http://127.0.0.1:8000/api/forget_password",
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
+            "login":HOSTING+"/api/login",
+            "forget_password":HOSTING+"/api/forget_password",
           }
         }
       return Response(response,status=status.HTTP_404_NOT_FOUND)
@@ -92,10 +99,10 @@ class LoginView(APIView):
           },
           "errors": "Incorrect Password!",
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
-            "login":"http://127.0.0.1:8000/api/login",
-            "forget_password":"http://127.0.0.1:8000/api/forget_password",
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
+            "login":HOSTING+"/api/login",
+            "forget_password":HOSTING+"/api/forget_password",
           }
         }
       return Response(response,status=status.HTTP_401_UNAUTHORIZED)
@@ -129,10 +136,10 @@ class ForgetPasswordView(APIView):
           },
           "errors": "User not found!",
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
-            "login":"http://127.0.0.1:8000/api/login",
-            "forget_password":"http://127.0.0.1:8000/api/forget_password",
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
+            "login":HOSTING+"/api/login",
+            "forget_password":HOSTING+"/api/forget_password",
           }
         }
       return Response(response,status=status.HTTP_404_NOT_FOUND)
@@ -153,11 +160,11 @@ class ForgetPasswordView(APIView):
           "message": "OTP is successfully sent. OTP is valid for 5 minutes.",
         },
         "links": {
-          "swagger": "http://127.0.0.1:8000/swagger",
-          "redoc": "http://127.0.0.1:8000/redoc",
-          "login":"http://127.0.0.1:8000/api/login",
-          "validate_otp":"http://127.0.0.1:8000/api/validate_otp",
-          "reset_password":"http://127.0.0.1:8000/api/reset_password"
+          "swagger": HOSTING+"/swagger",
+          "redoc": HOSTING+"/redoc",
+          "login":HOSTING+"/api/login",
+          "validate_otp":HOSTING+"/api/validate_otp",
+          "reset_password":HOSTING+"/api/reset_password"
         }
       }
     return Response(response,status=status.HTTP_200_OK)
@@ -179,11 +186,11 @@ class ResetPasswordView(APIView):
           "new_password": "New password is required." if not new_password else None,
         },
         "links": {
-          "swagger": "http://127.0.0.1:8000/swagger",
-          "redoc": "http://127.0.0.1:8000/redoc",
-          "login": "http://127.0.0.1:8000/api/login",
-          "forget_password": "http://127.0.0.1:8000/api/forget_password",
-          "reset_password": "http://127.0.0.1:8000/api/reset_password",
+          "swagger":HOSTING+ "/swagger",
+          "redoc": HOSTING+"/redoc",
+          "login": HOSTING+"/api/login",
+          "forget_password": HOSTING+"/api/forget_password",
+          "reset_password": HOSTING+"/api/reset_password",
         },
       }
       return Response(response, status=status.HTTP_400_BAD_REQUEST)
@@ -197,11 +204,11 @@ class ResetPasswordView(APIView):
           },
           "errors": "User not found!",
           "links": {
-            "swagger": "http://127.0.0.1:8000/swagger",
-            "redoc": "http://127.0.0.1:8000/redoc",
-            "login":"http://127.0.0.1:8000/api/login",
-            "forget_password":"http://127.0.0.1:8000/api/forget_password",
-            "reset_password":"http://127.0.0.1:8000/api/reset_password"
+            "swagger": HOSTING+"/swagger",
+            "redoc": HOSTING+"/redoc",
+            "login":HOSTING+"/api/login",
+            "forget_password":HOSTING+"/api/forget_password",
+            "reset_password":HOSTING+"/api/reset_password"
           }
         }
       return Response(response,status=status.HTTP_404_NOT_FOUND)
@@ -214,11 +221,11 @@ class ResetPasswordView(APIView):
         },
           "errors": "Invalid OTP!",
           "links": {
-          "swagger": "http://127.0.0.1:8000/swagger",
-          "redoc": "http://127.0.0.1:8000/redoc",
-          "login":"http://127.0.0.1:8000/api/login",
-          "forget_password":"http://127.0.0.1:8000/api/forget_password",
-          "reset_password":"http://127.0.0.1:8000/api/reset_password"
+          "swagger": HOSTING+"/swagger",
+          "redoc": HOSTING+"/redoc",
+          "login":HOSTING+"/api/login",
+          "forget_password":HOSTING+"/api/forget_password",
+          "reset_password":HOSTING+"/api/reset_password"
         }
       }
       return Response(response,status=status.HTTP_404_NOT_FOUND)
@@ -237,9 +244,9 @@ class ResetPasswordView(APIView):
                 "message": "Password has been successfully updated.",
             },
             "links": {
-                "swagger": "http://127.0.0.1:8000/swagger",
-                "redoc": "http://127.0.0.1:8000/redoc",
-                "login": "http://127.0.0.1:8000/api/login",
+                "swagger": HOSTING+"/swagger",
+                "redoc": HOSTING+"/redoc",
+                "login": HOSTING+"/api/login",
             },
         }
     return Response(response, status=status.HTTP_200_OK)

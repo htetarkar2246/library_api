@@ -1,5 +1,5 @@
 """
-URL configuration for ecommerce_api project.
+URL configuration for libary_api project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -22,10 +22,10 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="E-Commerce API",
+        title="Library API",
         default_version='v1',
-        description="API documentation for the e-commerce platform",
-        terms_of_service="https://github.com/htetarkar2246/E-commerce-api.git",
+        description="API documentation for the library platform",
+        terms_of_service="https://github.com/htetarkar2246/library_api.git/",
         contact=openapi.Contact(email="htetarkarlevi@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
