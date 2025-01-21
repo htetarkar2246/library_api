@@ -22,21 +22,25 @@ This is a library api that used Django. This project utilizes **Data Envelop** f
 
    ```bash
    pip install -r requirements.txt
+   ```
 
 3. Apply migrations:
 
   ```bash
   python manage.py makemigrations
   python manage.py migrate
+  ```
 
 4. Create a superuser:
 
   ```bash
   python manage.py createsuperuser
+  ```
 
 5. Start the development server:
   ```bash
   python manage.py runserver
+  ```
 
 6. Access the admin panel at http://127.0.0.1:8000/admin/.
 
